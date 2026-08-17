@@ -1,165 +1,36 @@
 # 📈 Unemployment Rate Forecasting Using ARIMA
 
-> A practical **time-series forecasting project** using the **ARIMA (AutoRegressive Integrated Moving Average)** model to analyze historical unemployment rates and generate future forecasts.
+This project focuses on analyzing historical **unemployment rates** and forecasting future values using the **ARIMA (AutoRegressive Integrated Moving Average)** model.
 
----
+Rather than directly fitting a forecasting model, the project follows a step-by-step time-series analysis workflow to understand the data first and then evaluate whether the model provides reliable forecasts.
 
-# 🎯 Project Objective
+## 🔍 What I Did
 
-The objective of this project is to analyze the historical **Unemployment Rate (%)**, establish stationarity, identify temporal patterns, develop and evaluate an ARIMA model, perform residual diagnostics, and forecast future unemployment rates.
+* 📊 Explored the unemployment rate using descriptive statistics, histograms, KDE, skewness, kurtosis, and boxplots.
+* 🧹 Handled missing observations using **linear interpolation**.
+* 📈 Visualized the unemployment rate over time to understand its historical behavior.
+* 📐 Applied the **Augmented Dickey-Fuller (ADF) test** to check stationarity.
+* 🔄 Used **first-order differencing** when the original series was non-stationary.
+* 🔎 Examined **PACF** to understand the temporal dependency structure and support ARIMA parameter selection.
+* 🤖 Developed an **ARIMA(0,1,1)** model.
+* 📏 Evaluated the model using an **80/20 train-test split**, RMSE, AIC, and BIC.
+* 🧪 Checked model residuals using residual plots, residual ACF, and the **Ljung-Box test**.
+* 🔮 Used the final model to forecast the unemployment rate for **2026–2030**, including 95% confidence intervals.
 
----
+## 🧠 Why ARIMA?
 
-# 🔄 Project Workflow
+ARIMA is particularly useful for univariate time-series problems because it models the relationship between current observations and their previous values while using differencing to handle non-stationarity.
 
-```text
-Data Loading
-     ↓
-Data Exploration
-     ↓
-Missing Value Handling
-     ↓
-Trend Analysis
-     ↓
-ADF Stationarity Test
-     ↓
-Differencing
-     ↓
-ACF / PACF Analysis
-     ↓
-ARIMA Model Development
-     ↓
-Train-Test Evaluation
-     ↓
-Residual Diagnostics
-     ↓
-Future Forecasting
-```
+In this project, the main focus was not just on obtaining future predictions, but on following a complete workflow:
 
----
+**Data Exploration → Stationarity Testing → Differencing → ACF/PACF → ARIMA → Evaluation → Residual Diagnostics → Forecasting**
 
-# 📊 1. Data Exploration
+## 🛠️ Tools Used
 
-The dataset is initially explored to understand the distribution and characteristics of the unemployment rate.
+**Python | Pandas | NumPy | Matplotlib | Seaborn | SciPy | Statsmodels | Scikit-learn | Google Colab**
 
-### Analysis includes:
+## 📌 Outcome
 
-* Descriptive statistics
-* Histogram with KDE
-* Skewness
-* Kurtosis
-* Boxplot
-* Time-series visualization
+The project provides an end-to-end example of how statistical analysis and time-series modeling can be combined to produce an interpretable unemployment-rate forecast.
 
----
-
-# 🧹 2. Data Preprocessing
-
-Missing unemployment-rate observations are handled using **linear interpolation** to maintain continuity in the time series.
-
-```python
-df['Unemployment_Rate(%)'] = df['Unemployment_Rate(%)'].interpolate(method='linear')
-```
-
----
-
-#  📉 3. Stationarity Testing
-
-The **Augmented Dickey-Fuller (ADF) test** is used to determine whether the unemployment-rate series is stationary.
-
-If the original series is non-stationary, first-order differencing is applied:
-
-```python
-df['Unemployment_diff'] = df['Unemployment_Rate(%)'].diff()
-```
-
-The differenced series is then tested again using the ADF test.
-
----
-
-# 🔍 4. ACF & PACF Analysis
-
-**ACF (Autocorrelation Function)** and **PACF (Partial Autocorrelation Function)** are examined to understand the temporal dependency structure and identify suitable candidate values for the ARIMA parameters.
-
----
-
-# 🤖 5. ARIMA Model
-
-The selected model in this analysis is:
-
-### `ARIMA(0,1,1)`
-
-Where:
-
-* **p = 0** → Autoregressive component
-* **d = 1** → First-order differencing
-* **q = 1** → Moving Average component
-
----
-
-# 📏 6. Model Evaluation
-
-An **80/20 train-test split** is used to evaluate the model.
-
-### Evaluation Metrics
-
-| Metric   | Purpose                                     |
-| -------- | ------------------------------------------- |
-| **RMSE** | Measures prediction error                   |
-| **AIC**  | Evaluates model fit with complexity penalty |
-| **BIC**  | Applies a stronger complexity penalty       |
-
-Both training and testing RMSE are examined to assess model performance and generalization.
-
----
-
-# 🧪 7. Residual Diagnostics
-
-After fitting the model, residuals are analyzed to determine whether meaningful temporal structure remains unexplained.
-
-### Diagnostic Checks
-
-* ✅ Residual plot
-* ✅ Residual ACF
-* ✅ Ljung-Box test
-
-The **Ljung-Box test** is used to check for significant autocorrelation in the residuals.
-
----
-
-# 🔮 8. Forecasting
-
-After model evaluation and residual diagnostics, the final ARIMA model is fitted to the complete dataset.
-
-The model generates unemployment-rate forecasts for:
-
-**📅 2026–2030**
-
-along with **95% confidence intervals**.
-
----
-
-# 📈 Forecast Visualization
-
-The final visualization compares:
-
-* Historical unemployment rates
-* Forecasted unemployment rates
-* 95% confidence intervals
-
-This provides an intuitive view of the expected future trajectory and forecast uncertainty.
-
----
-
-# 🛠️ Technologies & Libraries
-
-* 🐍 Python
-* 🐼 Pandas
-* 🔢 NumPy
-* 📊 Matplotlib
-* 📉 Seaborn
-* 🧪 SciPy
-* 📐 Statsmodels
-* 📏 Scikit-learn
-* ☁️ Google Colab
-
+It also highlights an important principle in forecasting: **a model should be evaluated and diagnosed before its forecasts are trusted.**
