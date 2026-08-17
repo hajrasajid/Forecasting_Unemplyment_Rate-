@@ -4,13 +4,13 @@
 
 ---
 
-## 🎯 Project Objective
+# 🎯 Project Objective
 
 The objective of this project is to analyze the historical **Unemployment Rate (%)**, establish stationarity, identify temporal patterns, develop and evaluate an ARIMA model, perform residual diagnostics, and forecast future unemployment rates.
 
 ---
 
-## 🔄 Project Workflow
+# 🔄 Project Workflow
 
 ```text
 Data Loading
@@ -38,7 +38,7 @@ Future Forecasting
 
 ---
 
-## 📊 1. Data Exploration
+# 📊 1. Data Exploration
 
 The dataset is initially explored to understand the distribution and characteristics of the unemployment rate.
 
@@ -53,7 +53,7 @@ The dataset is initially explored to understand the distribution and characteris
 
 ---
 
-## 🧹 2. Data Preprocessing
+# 🧹 2. Data Preprocessing
 
 Missing unemployment-rate observations are handled using **linear interpolation** to maintain continuity in the time series.
 
@@ -63,7 +63,7 @@ df['Unemployment_Rate(%)'] = df['Unemployment_Rate(%)'].interpolate(method='line
 
 ---
 
-## 📉 3. Stationarity Testing
+#  📉 3. Stationarity Testing
 
 The **Augmented Dickey-Fuller (ADF) test** is used to determine whether the unemployment-rate series is stationary.
 
@@ -77,13 +77,13 @@ The differenced series is then tested again using the ADF test.
 
 ---
 
-## 🔍 4. ACF & PACF Analysis
+# 🔍 4. ACF & PACF Analysis
 
 **ACF (Autocorrelation Function)** and **PACF (Partial Autocorrelation Function)** are examined to understand the temporal dependency structure and identify suitable candidate values for the ARIMA parameters.
 
 ---
 
-## 🤖 5. ARIMA Model
+# 🤖 5. ARIMA Model
 
 The selected model in this analysis is:
 
@@ -97,7 +97,7 @@ Where:
 
 ---
 
-## 📏 6. Model Evaluation
+# 📏 6. Model Evaluation
 
 An **80/20 train-test split** is used to evaluate the model.
 
@@ -113,7 +113,7 @@ Both training and testing RMSE are examined to assess model performance and gene
 
 ---
 
-## 🧪 7. Residual Diagnostics
+# 🧪 7. Residual Diagnostics
 
 After fitting the model, residuals are analyzed to determine whether meaningful temporal structure remains unexplained.
 
@@ -127,7 +127,7 @@ The **Ljung-Box test** is used to check for significant autocorrelation in the r
 
 ---
 
-## 🔮 8. Forecasting
+# 🔮 8. Forecasting
 
 After model evaluation and residual diagnostics, the final ARIMA model is fitted to the complete dataset.
 
@@ -139,7 +139,7 @@ along with **95% confidence intervals**.
 
 ---
 
-## 📈 Forecast Visualization
+# 📈 Forecast Visualization
 
 The final visualization compares:
 
@@ -151,7 +151,7 @@ This provides an intuitive view of the expected future trajectory and forecast u
 
 ---
 
-## 🛠️ Technologies & Libraries
+# 🛠️ Technologies & Libraries
 
 * 🐍 Python
 * 🐼 Pandas
@@ -163,12 +163,3 @@ This provides an intuitive view of the expected future trajectory and forecast u
 * 📏 Scikit-learn
 * ☁️ Google Colab
 
----
-
-## 💡 Key Takeaway
-
-This project demonstrates that reliable time-series forecasting is not simply about fitting an ARIMA model. A complete workflow involves:
-
-**Data Exploration → Stationarity → ACF/PACF → Model Evaluation → Residual Diagnostics → Forecasting**
-
-The goal is to build a forecasting process that is **statistically evaluated, interpretable, and reproducible**.
